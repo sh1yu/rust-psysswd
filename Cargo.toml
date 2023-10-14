@@ -1,0 +1,21 @@
+[package]
+name = "rust-psysswd"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.4.6", features = ["derive"] }
+dotenv_codegen = "0.15.0"
+serde = { version = "1.0.189", features = ["derive"] }
+serde_json = "1.0.107"
+tokio = { version = "1.33.0", features = ["fs", "macros", "rt-multi-thread"] }
+serde_yaml = "0.9.25"
+anyhow = "1.0.75"
+rpassword = "7.2.0"
+home = "0.5.5"
+shellexpand = "3.1.0"
+dirs = "5.0.1"
+sqlx = { version = "0.7.2", features = ["runtime-tokio", "sqlite", "chrono"] }
+chrono = { version = "0.4.31", features = ["serde"] }
