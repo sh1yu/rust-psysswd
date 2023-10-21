@@ -3,6 +3,11 @@ use clap::{value_parser, Parser};
 use dotenv_codegen::dotenv;
 use rust_psysswd::cli::{CliArgs, CliCommands};
 use rust_psysswd::{config, persist, read_username_and_password};
+use std::iter::once_with;
+use tabled::settings::object::Segment;
+use tabled::settings::{Modify, Style, Width};
+use tabled::settings::measurement::Percent;
+use tabled::Table;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -44,7 +49,12 @@ async fn main() -> Result<()> {
                 find_args.search_key,
             )
             .await?;
-            println!("search result: {:?}", result);
+
+            let mut print_table = Table::new(result);
+            print_table
+                // .with(Style::psql())
+                .with(Modify::new(Segment::all()).with(Width::wrap(25)));
+            println!("search result: \n{}", print_table.to_string());
         }
         CliCommands::Add(add_args) => {
             println!("add: {:?}", add_args);
