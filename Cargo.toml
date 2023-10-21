@@ -19,3 +19,5 @@ shellexpand = "3.1.0"
 dirs = "5.0.1"
 sqlx = { version = "0.7.2", features = ["runtime-tokio", "sqlite", "chrono"] }
 chrono = { version = "0.4.31", features = ["serde"] }
+totp-rs = "5.4.0"
+hex = "0.4.3"
